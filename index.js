@@ -52,7 +52,7 @@ module.exports = function(RED) {
               sendlog(logGroupA);
               logGroupA = [];
             }
-          },5000);
+          },n.delay? n.delay * 1000 : 5000);
           
           
 

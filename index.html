@@ -7,6 +7,10 @@
       <label for="node-input-events"><i class="fa fa-tag"></i> <span>Events</span></label>
       <input type="text" id="node-input-events" placeholder="events">
     </div>
+    <div class="form-row">
+      <label for="node-input-delay"><i class="fa fa-tag"></i> <span>Delay (Sec)</span></label>
+      <input type="text" id="node-input-delay" placeholder="delay">
+    </div>
   </script>
   <script type="text/javascript">
     RED.nodes.registerType('ignite metrics', {
@@ -14,10 +18,13 @@
         color: "#a6bbcf",
         defaults: {
           name: { value: "ignite metrics" },
-          events: { value: "nodes,cpu,memory,gc,loop,https,https-outbound" }
+          events: { value: "node,cpu,memory,gc,loop,https,https-outbound" , required: true},
+          delay : { value: 5, required: true, validate:RED.validators.number()}
         },
         inputs:0,
         outputs:1,
+        icon: "bridge.svg",
+        align: "right",
         label: function() {
         return this.name;
         },
