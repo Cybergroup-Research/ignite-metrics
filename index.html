@@ -1,0 +1,28 @@
+<script type="text/x-red" data-template-name="ignite metrics">
+    <div class="form-row">
+      <label for="node-input-name"><i class="fa fa-tag"></i> <span>Name</span></label>
+      <input type="text" id="node-input-name" placeholder="name">
+    </div>
+    <div class="form-row">
+      <label for="node-input-events"><i class="fa fa-tag"></i> <span>Events</span></label>
+      <input type="text" id="node-input-events" placeholder="events">
+    </div>
+  </script>
+  <script type="text/javascript">
+    RED.nodes.registerType('ignite metrics', {
+        category: "analysis",
+        color: "#a6bbcf",
+        defaults: {
+          name: { value: "ignite metrics" },
+          events: { value: "nodes,cpu,memory,gc,loop,https,https-outbound" }
+        },
+        inputs:0,
+        outputs:1,
+        label: function() {
+        return this.name;
+        },
+        labelStyle: function() {
+        return this.name ? "node_label_italic" : "";
+        }
+    });
+  </script>

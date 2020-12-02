@@ -1,19 +1,31 @@
 {
   "name": "@cgignite/ignite-metrics",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Ignite metrics listener",
+  "author": {
+    "name": "bijay shah",
+    "email": "bijay.shah@cygrp.com"
+  },
+  "keywords": [
+    "node-red",
+    "ignite",
+    "metrics"
+  ],
+  "node-red": {
+    "nodes": {
+      "metrics": "index.js"
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Cybergroup-Research/ignite-metrics.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Cybergroup-Research/ignite-metrics/issues"
   },
-  "homepage": "https://github.com/Cybergroup-Research/ignite-metrics#readme"
+  "homepage": "https://github.com/Cybergroup-Research/ignite-metrics#readme",
+  "dependencies": {
+    "appmetrics": "^5.1.1"
+  }
 }
