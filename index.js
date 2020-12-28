@@ -1,7 +1,9 @@
 module.exports = function(RED) {
   'use strict';
-  var appmetrics = require('appmetrics');
+
   function igniteMetrics(n) {
+    let require = this.context().global.get('require');
+    var appmetrics = require('appmetrics')
 
     RED.nodes.createNode(this, n);
     var node = this;

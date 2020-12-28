@@ -1,6 +1,6 @@
 {
   "name": "@cgignite/ignite-metrics",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Ignite metrics listener",
   "author": {
     "name": "bijay shah",
@@ -25,7 +25,5 @@
     "url": "https://github.com/Cybergroup-Research/ignite-metrics/issues"
   },
   "homepage": "https://github.com/Cybergroup-Research/ignite-metrics#readme",
-  "dependencies": {
-    "appmetrics": "^5.1.1"
-  }
+  "dependencies": {}
 }
