@@ -4,12 +4,23 @@
       <input type="text" id="node-input-name" placeholder="name">
     </div>
     <div class="form-row">
-      <label for="node-input-events"><i class="fa fa-tag"></i> <span>Events</span></label>
-      <input type="text" id="node-input-events" placeholder="events">
-    </div>
-    <div class="form-row">
       <label for="node-input-delay"><i class="fa fa-tag"></i> <span>Delay (Sec)</span></label>
       <input type="text" id="node-input-delay" placeholder="delay">
+    </div>
+    <div style="width:100%;border:2px solid #f3f3f3">
+      <div class="form-row" id="node-input-events-container-row">
+          <table style="width:100%" id="node-input-events-container">
+              <thead>
+                  <tr style="width:100%;background-color:#f3f3f3">
+                      <th style="width:80%;text-align: left;padding-left: 10px;">Events</th>
+                      <th style="width:20%"></th>
+                  </tr>
+              </thead>
+          </table>
+      </div>
+    </div>
+    <div class="form-row" style="display:none">
+      <input type="hidden" id="node-input-events" placeholder="events">
     </div>
   </script>
   <script type="text/javascript">
@@ -30,6 +41,36 @@
         },
         labelStyle: function() {
         return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare : function () {
+          var selected_events = this.events.split(',');
+          
+          ['node', 'cpu', 'memory', 'gc', 'loop', 'https', 'https-outbound'].forEach(element => {
+              let checked = selected_events.indexOf(element) >= 0 ? "checked" : ""; 
+              let unique_id = "ignite-metrics-" +  Math.floor(1000 + Math.random() * 9000);
+              $(`
+                <tr id="node-input-events-endpoints-row-${unique_id}" style="border-bottom: 1px solid #efefef47;">
+                  <td style="padding-left: 10px;">
+                     ${element}
+                  </td>
+                  <td>
+                    <input name="event-checkbox-${element}" type="checkbox" ${checked} />
+                  </td>
+                </tr>
+              `).appendTo("#node-input-events-container");
+          });
+        },
+        oneditsave : function () {
+          let selected_events = [];
+          $('#node-input-events-container tr td input').each(function()
+          {
+                
+                if($(this).is(":checked"))
+                {
+                  selected_events.push($(this).attr('name').replace('event-checkbox-', ''));
+                }
+          });
+          $("#node-input-events").val(selected_events.toString());
         }
     });
   </script>
