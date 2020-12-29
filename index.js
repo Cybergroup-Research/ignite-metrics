@@ -25,6 +25,10 @@ module.exports = function(RED) {
     var logSwitchAB = true;
 
     function pushLog(type, data){
+      if(type == "node" && (data.type == "ignite metrics" || data.type == "debug"))
+      {
+          return;
+      }
       if(logSwitchAB)
       {
         logGroupA.push({ "type" : type, value : data  })
@@ -36,6 +40,7 @@ module.exports = function(RED) {
 
     this.selectedEvents.forEach(element => {
           node["_monitor" + element] = function(data){
+
             pushLog(element, data);
           }
           this.monitor.on(element, node["_monitor" + element]);
